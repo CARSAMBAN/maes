@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cihaz Temlikli Liste</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="card">
+      <h1>CİHAZ TEMLİKLİ LİSTE</h1>
+      <div id="mobiliptal" class="samsunglogo">
+        <img width="200vh" src="samsung.png" alt="">
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Hafıza</th>
+              <th>Taksit Tutarı</th>
+              <th>Gerekli Puan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Model"><span>A07</span></td>
+              <td data-label="Hafıza"><span>8/256</span></td>
+              <td data-label="Taksit Tutarı" id="samsunga07taksit">-</td>
+              <td data-label="Gerekli Puan" id="samsunga07puan">Yükleniyor...</td>
+             </tr>
+              <tr>
+              <td data-label="Model"><span>A15</span></td>
+              <td data-label="Hafıza"><span>8/256</span></td>
+              <td data-label="Taksit Tutarı" id="samsunga15taksit">-</td>
+              <td data-label="Gerekli Puan" id="samsunga15puan">Yükleniyor...</td>
+             </tr>
+              <tr>
+              <td data-label="Model"><span>A16</span></td>
+              <td data-label="Hafıza"><span>8/256</span></td>
+              <td data-label="Taksit Tutarı" id="samsunga16taksit">-</td>
+              <td data-label="Gerekli Puan" id="samsunga16puan">Yükleniyor...</td>
+             </tr>
+              <tr>
+              <td data-label="Model"><span>A16 5G</span></td>
+              <td data-label="Hafıza"><span>8/256</span></td>
+              <td data-label="Taksit Tutarı" id="samsunga165gtaksit">-</td>
+              <td data-label="Gerekli Puan" id="samsunga165gpuan">Yükleniyor...</td>
+             </tr>
+              <tr>
+              <td data-label="Model"><span>A36 5G</span></td>
+              <td data-label="Hafıza"><span>8/256</span></td>
+              <td data-label="Taksit Tutarı" id="samsunga365gtaksit">-</td>
+              <td data-label="Gerekli Puan" id="samsunga365gpuan">Yükleniyor...</td>
+             </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 🔘 Python kodunu çağıran buton -->
+  <div style="text-align:center; margin-top:25px;">
+    <button id="fiyatBtn" style="
+      padding: 10px 25px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    ">💰 Fiyatları Güncelle</button>
+    <p id="sonuc" style="margin-top:15px; font-weight:bold;"></p>
+  </div>
+
+  <!-- JavaScript dosyalarını en alta ekle -->
+  <script src="script.js"></script>
+
+  <!-- 🔗 API bağlantısı -->
+  <script>
+    document.getElementById("fiyatBtn").addEventListener("click", async () => {
+      const sonuc = document.getElementById("sonuc");
+      sonuc.textContent = "🔄 Fiyat çekme işlemi başlatılıyor...";
+      try {
+        const res = await fetch("https://maes.onrender.com/");
+        const data = await res.json();
+        sonuc.textContent = "✅ " + data.message;
+      } catch (err) {
+        sonuc.textContent = "❌ Hata: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
